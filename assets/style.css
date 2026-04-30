@@ -1,103 +1,127 @@
 /* assets/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: 'Nunito', sans-serif;
+    background-color: #fcf8f9; /* Fundo cinza/rosado muito sutil */
+    color: #4a4a4a;
     margin: 0;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.08); /* Sombra com um leve toque de rosa */
 }
 
 h1, h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #eee;
+    color: #ec4899; /* Rosa elegante e moderno (estilo Tailwind Pink 500) */
+    border-bottom: 2px solid #fbcfe8; /* Linha rosa claro */
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px 20px;
     color: #fff;
-    background-color: #3498db;
+    background-color: #ec4899; /* Botão principal Rosa */
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #2980b9;
+    background-color: #db2777; /* Rosa um pouco mais escuro no hover */
 }
 
 .btn-danger {
-    background-color: #e74c3c;
+    background-color: #f43f5e; /* Vermelho/Rosa escuro para deletar */
 }
 
 .btn-danger:hover {
-    background-color: #c0392b;
+    background-color: #e11d48;
 }
 
 .btn-small {
-    padding: 5px 10px;
-    font-size: 12px;
+    padding: 6px 15px;
+    font-size: 13px;
+    border-radius: 6px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 table th, table td {
-    padding: 12px;
+    padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #fdf2f8; /* Linha divisória rosa muito clara */
 }
 
 table th {
-    background-color: #f8f9fa;
-    color: #555;
+    background-color: #fdf2f8; /* Fundo do cabeçalho rosa bem clarinho */
+    color: #db2777; /* Texto do cabeçalho rosa escuro */
+    font-weight: 700;
+}
+
+table tr:last-child td {
+    border-bottom: none;
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #fcfcfc;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #db2777; /* Labels do formulário em rosa escuro */
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    padding: 10px 12px;
+    border: 1px solid #fbcfe8; /* Borda rosa clarinho */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: #4a4a4a;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ec4899; /* Borda rosa no foco */
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15); /* Efeito de brilho rosa */
 }
 
 .actions {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .empty-state {
     text-align: center;
-    padding: 20px;
-    color: #777;
+    padding: 30px;
+    color: #f9a8d4; /* Texto de estado vazio em rosa pastel */
+    font-style: italic;
 }

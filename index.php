@@ -18,7 +18,7 @@ $pets = $petModel->listarTodos();
 </head>
 <body>
     <div class="container">
-        <h1>Sistema de Petshop (POO)</h1>
+        <h1>Petshop Patinhas Felizes</h1>
         
         <a href="create.php" class="btn">Adicionar Novo Pet</a>
         
