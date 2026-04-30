@@ -1,13 +1,15 @@
 <?php
 // classes/Pet.php - O nosso "Model" na arquitetura POO
 
+require_once 'Conexao.php'; // Inclui a classe Singleton
+
 class Pet {
     private $pdo;
 
-    // O construtor é chamado automaticamente quando fazemos: new Pet($pdo)
-    // Ele recebe a conexão do banco de dados (config.php) para usar dentro da classe
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
+    // O construtor não precisa mais receber $pdo da tela (index.php)
+    // Ele mesmo vai lá no Singleton e "puxa" a conexão
+    public function __construct() {
+        $this->pdo = Conexao::getConn();
     }
 
     // Método para listar todos os pets (Read)

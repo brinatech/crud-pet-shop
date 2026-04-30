@@ -1,7 +1,6 @@
 <?php
 // edit.php - Lógica e formulário para editar um pet (Refatorado para POO)
 
-require_once 'config.php';
 require_once 'classes/Pet.php';
 
 if (!isset($_GET['id'])) {
@@ -9,7 +8,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$petModel = new Pet($pdo);
+$petModel = new Pet();
 
 // Se o formulário foi enviado (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

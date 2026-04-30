@@ -1,7 +1,6 @@
 <?php
 // delete.php - Lógica para excluir um pet (Refatorado para POO)
 
-require_once 'config.php';
 require_once 'classes/Pet.php';
 
 // Verifica se recebeu um ID
@@ -9,7 +8,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Instancia o Model e chama o método deletar()
-    $petModel = new Pet($pdo);
+    $petModel = new Pet();
     $petModel->deletar($id);
 }
 
