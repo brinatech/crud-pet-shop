@@ -13,7 +13,7 @@ $pets = $petModel->listarTodos();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Petshop CRUD (POO)</title>
+    <title>Petshop Patinhas Felizes</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>

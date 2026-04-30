@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #fcf8f9; /* Fundo cinza/rosado muito sutil */
+    background-color: #fcf8f8; /* Fundo off-white mais puxado pro quente */
     color: #4a4a4a;
     margin: 0;
     padding: 30px 20px;
@@ -15,12 +15,12 @@ body {
     background-color: #ffffff;
     padding: 30px 40px;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.08); /* Sombra com um leve toque de rosa */
+    box-shadow: 0 4px 15px rgba(139, 28, 49, 0.08); /* Sombra avermelhada */
 }
 
 h1, h2 {
-    color: #ec4899; /* Rosa elegante e moderno (estilo Tailwind Pink 500) */
-    border-bottom: 2px solid #fbcfe8; /* Linha rosa claro */
+    color: #8b1c31; /* Vinho mais puxado pro vermelho escuro (Carmim) */
+    border-bottom: 2px solid #ecd5d8;
     padding-bottom: 10px;
     text-align: center;
 }
@@ -29,7 +29,7 @@ h1, h2 {
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
-    background-color: #ec4899; /* Botão principal Rosa */
+    background-color: #8b1c31; /* Botão principal vermelho vinho */
     text-decoration: none;
     border-radius: 8px;
     border: none;
@@ -40,15 +40,15 @@ h1, h2 {
 }
 
 .btn:hover {
-    background-color: #db2777; /* Rosa um pouco mais escuro no hover */
+    background-color: #6d1324; /* Mais escuro no hover */
 }
 
 .btn-danger {
-    background-color: #f43f5e; /* Vermelho/Rosa escuro para deletar */
+    background-color: #e66767;
 }
 
 .btn-danger:hover {
-    background-color: #e11d48;
+    background-color: #c44569;
 }
 
 .btn-small {
@@ -66,12 +66,12 @@ table {
 table th, table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #fdf2f8; /* Linha divisória rosa muito clara */
+    border-bottom: 1px solid #f2e4e6;
 }
 
 table th {
-    background-color: #fdf2f8; /* Fundo do cabeçalho rosa bem clarinho */
-    color: #db2777; /* Texto do cabeçalho rosa escuro */
+    background-color: #f5e8ea; /* Fundo do cabeçalho avermelhado bem clarinho */
+    color: #8b1c31;
     font-weight: 700;
 }
 
@@ -80,7 +80,7 @@ table tr:last-child td {
 }
 
 table tr:hover {
-    background-color: #fcfcfc;
+    background-color: #faf5f6;
 }
 
 .form-group {
@@ -91,13 +91,13 @@ table tr:hover {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #db2777; /* Labels do formulário em rosa escuro */
+    color: #8b1c31;
 }
 
 .form-group input {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #fbcfe8; /* Borda rosa clarinho */
+    border: 1px solid #e8cbcf;
     border-radius: 8px;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
@@ -108,8 +108,8 @@ table tr:hover {
 
 .form-group input:focus {
     outline: none;
-    border-color: #ec4899; /* Borda rosa no foco */
-    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15); /* Efeito de brilho rosa */
+    border-color: #8b1c31;
+    box-shadow: 0 0 0 3px rgba(139, 28, 49, 0.15);
 }
 
 .actions {
@@ -122,6 +122,6 @@ table tr:hover {
 .empty-state {
     text-align: center;
     padding: 30px;
-    color: #f9a8d4; /* Texto de estado vazio em rosa pastel */
+    color: #c499a0;
     font-style: italic;
 }
