@@ -1,6 +1,8 @@
 <?php
 // index.php - Tela inicial: lista os pets (Refatorado para POO)
 
+require_once 'classes/Pet.php';
+
 // 1. Instanciar o objeto Pet (ele já puxa a conexão do Singleton sozinho)
 $petModel = new Pet();
 
