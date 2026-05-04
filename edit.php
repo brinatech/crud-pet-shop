@@ -1,5 +1,4 @@
 <?php
-// edit.php - Lógica e formulário para editar um pet (Refatorado para POO)
 
 require_once 'classes/Pet.php';
 
@@ -26,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Se for um acesso normal (GET), busca os dados atuais usando o método da classe Pet
+// Se for um acesso (GET), busca os dados atuais usando o método da classe Pet
 $petAtual = $petModel->buscarPorId($id);
 
 if (!$petAtual) {
