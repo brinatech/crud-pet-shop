@@ -12,7 +12,7 @@ Para rodar este projeto localmente, você precisará ter o **XAMPP** instalado.
 
 3. **Acesse o Sistema!**
    Com o banco configurado, vá para a tela inicial do sistema acessando:
-   👉 `http://localhost/crud-pet-shop/index.php`
+    `http://localhost/crud-pet-shop/index.php`
 
    Se você colocou em uma nova pasta no htdocs, digite:
-   👉 `http://localhost/nome_da_sua_pasta/crud-pet-shop/index.php`
+   `http://localhost/nome_da_sua_pasta/crud-pet-shop/index.php`
