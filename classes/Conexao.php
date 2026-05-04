@@ -1,12 +1,11 @@
 <?php
-// classes/Conexao.php - Padrão Singleton para o Banco de Dados
 
 class Conexao {
-    // Variável estática que vai guardar a nossa única instância da conexão
+    // Variável estática que vai guardar a única instância da conexão
     private static $instance;
 
     public static function getConn() {
-        // Verificação se já existe uma instância, caso NÃO exista ele cria a conexão
+        // Verifica se já existe uma instância, se não existir, exista ele cria a conexão
         if (!isset(self::$instance)) {
             $host = '127.0.0.1';
             $db   = 'petshop_db';
@@ -14,7 +13,7 @@ class Conexao {
             $pass = '';
 
             try {
-                // Cria a conexão (igual a imagem do professor, mas com os dados do nosso banco)
+                // Cria a conexão 
                 self::$instance = new \PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
                 
                 // Configurações de erro do PDO para facilitar debug
@@ -28,7 +27,7 @@ class Conexao {
             }
         }
         
-        // Se a conexão já existia (ou acabou de ser criada), ele apenas a retorna reaproveitada
+        // Se a conexão já existia ou acabou de ser criada, ele apenas a retorna reaproveitando
         return self::$instance;
     }
 }
