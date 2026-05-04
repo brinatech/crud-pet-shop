@@ -1,5 +1,4 @@
 <?php
-// delete.php - Lógica para excluir um pet (Refatorado para POO)
 
 require_once 'classes/Pet.php';
 
