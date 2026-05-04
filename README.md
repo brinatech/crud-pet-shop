@@ -1,4 +1,4 @@
-# Petshop Patinhas Felizes (CRUD PHP POO)
+# Petshop Patinhas Felizes 
 
 O projeto consiste em um CRUD (Create, Read, Update, Delete) escrito em PHP puro, focado em aplicar os conceitos de **Programação Orientada a Objetos (POO)** e o padrão de projeto **Singleton** para a conexão com o banco de dados.
 
