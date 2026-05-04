@@ -1,12 +1,11 @@
 <?php
-// setup.php - Script para facilitar a criação do banco de dados e tabela
 
 $host = '127.0.0.1';
 $user = 'root';
-$pass = ''; // Senha vazia padrão do XAMPP
+$pass = ''; 
 
 try {
-    // Conecta sem selecionar o banco, pois vamos criá-lo
+    // Conecta sem selecionar o banco
     $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
