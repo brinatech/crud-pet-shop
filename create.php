@@ -1,5 +1,4 @@
 <?php
-// create.php - Lógica e formulário para criar um novo pet (Refatorado para POO)
 
 require_once 'classes/Pet.php';
 
@@ -11,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $raca = $_POST['raca'];
     $idade = $_POST['idade'];
 
-    // Instancia o Model (ele se conecta automaticamente via Singleton)
+    // Instancia o Model 
     $petModel = new Pet();
 
     // Usa o método salvar() da classe Pet
