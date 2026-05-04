@@ -1,9 +1,9 @@
-/* assets/style.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #fcf8f8; /* Fundo off-white mais puxado pro quente */
+    background-color: #fcf8f8; 
     color: #4a4a4a;
     margin: 0;
     padding: 30px 20px;
@@ -15,11 +15,11 @@ body {
     background-color: #ffffff;
     padding: 30px 40px;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(139, 28, 49, 0.08); /* Sombra avermelhada */
+    box-shadow: 0 4px 15px rgba(139, 28, 49, 0.08); 
 }
 
 h1, h2 {
-    color: #8b1c31; /* Vinho mais puxado pro vermelho escuro (Carmim) */
+    color: #8b1c31; 
     border-bottom: 2px solid #ecd5d8;
     padding-bottom: 10px;
     text-align: center;
@@ -29,7 +29,7 @@ h1, h2 {
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
-    background-color: #8b1c31; /* Botão principal vermelho vinho */
+    background-color: #8b1c31; 
     text-decoration: none;
     border-radius: 8px;
     border: none;
@@ -40,8 +40,7 @@ h1, h2 {
 }
 
 .btn:hover {
-    background-color: #6d1324; /* Mais escuro no hover */
-}
+    background-color: #6d1324; 
 
 .btn-danger {
     background-color: #e66767;
@@ -70,7 +69,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #f5e8ea; /* Fundo do cabeçalho avermelhado bem clarinho */
+    background-color: #f5e8ea; 
     color: #8b1c31;
     font-weight: 700;
 }
