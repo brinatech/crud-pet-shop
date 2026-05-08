@@ -1,6 +1,5 @@
 <?php
-
-require_once 'Conexao.php'; 
+require_once __DIR__ . '/Conexao.php';
 
 class Pet {
     private $pdo;
@@ -9,43 +8,49 @@ class Pet {
         $this->pdo = Conexao::getConn();
     }
 
-    // (Read)
-    public function listarTodos() {
-        $sql = "SELECT * FROM pets ORDER BY id DESC";
-        $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna um array com todos os pets
+    public function salvar($usuario_id, $nome, $especie, $raca, $data_nascimento) {
+        $sql = "INSERT INTO pets (usuario_id, nome, especie, raca, data_nascimento) VALUES (:usuario_id, :nome, :especie, :raca, :data_nascimento)";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            'usuario_id' => $usuario_id,
+            'nome' => $nome,
+            'especie' => $especie,
+            'raca' => $raca,
+            'data_nascimento' => $data_nascimento
+        ]);
     }
 
-    // Buscar um único pet pelo ID
-        public function buscarPorId($id) {
-        $sql = "SELECT * FROM pets WHERE id = :id";
+    public function listarPorTutor($usuario_id) {
+        $sql = "SELECT * FROM pets WHERE usuario_id = :usuario_id ORDER BY nome ASC";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna apenas 1 pet
+        $stmt->execute(['usuario_id' => $usuario_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // (Create)
-    public function salvar($nome, $especie, $raca, $idade) {
-        $sql = "INSERT INTO pets (nome, especie, raca, idade) VALUES (:nome, :especie, :raca, :idade)";
+    public function buscarPorId($id, $usuario_id) {
+        $sql = "SELECT * FROM pets WHERE id = :id AND usuario_id = :usuario_id";
         $stmt = $this->pdo->prepare($sql);
-
-        return $stmt->execute(['nome' => $nome, 'especie' => $especie, 'raca' => $raca, 'idade' => $idade]); // Retorna true se inseriu com sucesso
+        $stmt->execute(['id' => $id, 'usuario_id' => $usuario_id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // (Update)
-    public function atualizar($id, $nome, $especie, $raca, $idade) {
-        $sql = "UPDATE pets SET nome = :nome, especie = :especie, raca = :raca, idade = :idade WHERE id = :id";
+    public function atualizar($id, $usuario_id, $nome, $especie, $raca, $data_nascimento) {
+        $sql = "UPDATE pets SET nome = :nome, especie = :especie, raca = :raca, data_nascimento = :data_nascimento WHERE id = :id AND usuario_id = :usuario_id";
         $stmt = $this->pdo->prepare($sql);
-        
-        return $stmt->execute(['id' => $id,'nome' => $nome, 'especie' => $especie, 'raca' => $raca, 'idade' => $idade]); // Retorna true se atualizou com sucesso
+        return $stmt->execute([
+            'nome' => $nome,
+            'especie' => $especie,
+            'raca' => $raca,
+            'data_nascimento' => $data_nascimento,
+            'id' => $id,
+            'usuario_id' => $usuario_id
+        ]);
     }
 
-    // (Delete)
-    public function deletar($id) {
-        $sql = "DELETE FROM pets WHERE id = :id";
+    public function deletar($id, $usuario_id) {
+        $sql = "DELETE FROM pets WHERE id = :id AND usuario_id = :usuario_id";
         $stmt = $this->pdo->prepare($sql);
-        
-        return $stmt->execute(['id' => $id]); // Retorna true se deletou com sucesso
+        return $stmt->execute(['id' => $id, 'usuario_id' => $usuario_id]);
     }
 }
 ?>

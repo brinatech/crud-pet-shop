@@ -1,59 +1,76 @@
 <?php
+session_start();
 
-require_once 'classes/Pet.php';
+if (isset($_SESSION['usuario_id'])) {
+    if ($_SESSION['perfil'] === 'admin') {
+        header("Location: admin/dashboard.php");
+    } else {
+        header("Location: dashboard.php");
+    }
+    exit;
+}
 
-// Instanciar o objeto Pet 
-$petModel = new Pet();
+require_once 'classes/Usuario.php';
 
-// Usar o método da classe para buscar os pets
-$pets = $petModel->listarTodos();
+$erro = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
+    $senha = $_POST['senha'];
+
+    if (!empty($email) && !empty($senha)) {
+        $usuarioModel = new Usuario();
+        $usuario = $usuarioModel->autenticar($email, $senha);
+
+        if ($usuario) {
+            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_nome'] = $usuario['nome'];
+            $_SESSION['perfil'] = $usuario['perfil'];
+            
+            if ($usuario['perfil'] === 'admin') {
+                header("Location: admin/dashboard.php");
+            } else {
+                header("Location: dashboard.php");
+            }
+            exit;
+        } else {
+            $erro = "E-mail ou senha incorretos.";
+        }
+    } else {
+        $erro = "Preencha todos os campos.";
+    }
+}
+
+include 'includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Petshop Patinhas Felizes</title>
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Petshop Patinhas Felizes</h1>
+
+<div class="auth-container">
+    <h2>Acesse sua Conta</h2>
+    <p>Bem-vindo ao Petshop Patinhas Felizes!</p>
+    
+    <?php if ($erro): ?>
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+            <?php echo $erro; ?>
+        </div>
+    <?php endif; ?>
+
+    <form method="POST" action="index.php">
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+        </div>
         
-        <a href="create.php" class="btn">Adicionar Novo Pet</a>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Espécie</th>
-                    <th>Raça</th>
-                    <th>Idade</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($pets) > 0): ?>
-                    <?php foreach ($pets as $pet): ?>
-                        <tr>
-                            <td><?php echo $pet['id']; ?></td>
-                            <td><?php echo htmlspecialchars($pet['nome']); ?></td>
-                            <td><?php echo htmlspecialchars($pet['especie']); ?></td>
-                            <td><?php echo htmlspecialchars($pet['raca']); ?></td>
-                            <td><?php echo $pet['idade']; ?> anos</td>
-                            <td>
-                                <a href="edit.php?id=<?php echo $pet['id']; ?>" class="btn btn-small">Editar</a>
-                                <a href="delete.php?id=<?php echo $pet['id']; ?>" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar este pet?');">Deletar</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="6" class="empty-state">Nenhum pet cadastrado. Adicione um novo!</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Entrar</button>
+    </form>
+
+    <div class="auth-links">
+        <p>Ainda não é cliente? <a href="cadastro.php">Cadastre-se aqui</a></p>
     </div>
-</body>
-</html>
+</div>
+
+<?php include 'includes/footer.php'; ?>
