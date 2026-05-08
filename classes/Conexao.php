@@ -7,7 +7,7 @@ class Conexao
 
     public static function getConn()
     {
-        // Verifica se já existe uma instância, se não existir, exista ele cria a conexão
+        // Verifica se já existe uma instância, se não existir, ele cria a conexão
         if (!isset(self::$instance)) {
             $host = '127.0.0.1';
             $db = 'petshop_db';
