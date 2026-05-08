@@ -11,8 +11,8 @@ class Conexao
         if (!isset(self::$instance)) {
             $host = '127.0.0.1';
             $db = 'petshop_db';
-            $user = 'admin';
-            $pass = '919811As@';
+            $user = 'root';
+            $pass = '';
 
             try {
                 // Cria a conexão 

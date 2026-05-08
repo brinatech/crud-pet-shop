@@ -2,7 +2,12 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$base_url = 'http://' . $_SERVER['HTTP_HOST'];
+// Detecta o caminho base até a pasta raiz do projeto (crud-pet-shop)
+$scriptPath = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
+$projectRoot = 'crud-pet-shop';
+$pos = strpos($scriptPath, '/' . $projectRoot);
+$basePath = ($pos !== false) ? substr($scriptPath, 0, $pos + strlen($projectRoot) + 1) : '/';
+$base_url = 'http://' . $_SERVER['HTTP_HOST'] . rtrim($basePath, '/');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

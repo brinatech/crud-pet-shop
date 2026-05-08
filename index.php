@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$base_url = 'http://' . $_SERVER['HTTP_HOST'];
 include 'includes/header.php';
 ?>
 
