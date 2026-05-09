@@ -7,8 +7,16 @@ $petModel = new Pet();
 $pet = $petModel->buscarPorId($_GET['id'], $_SESSION['usuario_id']);
 if (!$pet) { die("Pet não encontrado."); }
 
+$erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_nascimento = !empty($_POST['data_nascimento']) ? $_POST['data_nascimento'] : null;
+    $hoje = date('Y-m-d');
+    
+    if ($data_nascimento && $data_nascimento > $hoje) {
+        echo "<script>alert('A data de nascimento do pet não pode ser no futuro.'); window.history.back();</script>";
+        exit;
+    }
+
     $petModel->atualizar($pet['id'], $_SESSION['usuario_id'], $_POST['nome'], $_POST['especie'], $_POST['raca'], $data_nascimento);
     header("Location: index.php"); exit;
 }

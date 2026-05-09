@@ -17,16 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefone = trim($_POST['telefone']);
     $senha = $_POST['senha'];
 
-    if (!empty($nome) && !empty($email) && !empty($senha)) {
-        $usuarioModel = new Usuario();
-        
-        if ($usuarioModel->salvar($nome, $email, $senha, $telefone)) {
-            $sucesso = "Cadastro realizado com sucesso! Você já pode fazer login.";
-        } else {
-            $erro = "Este e-mail já está cadastrado.";
-        }
+    if (strlen($senha) < 6) {
+        $erro = "A senha deve ter pelo menos 6 caracteres.";
     } else {
-        $erro = "Preencha todos os campos obrigatórios (*).";
+        if (!empty($nome) && !empty($email) && !empty($senha)) {
+            $usuarioModel = new Usuario();
+            
+            if ($usuarioModel->salvar($nome, $email, $senha, $telefone)) {
+                $sucesso = "Cadastro realizado com sucesso! Você já pode fazer login.";
+            } else {
+                $erro = "Este e-mail já está cadastrado.";
+            }
+        } else {
+            $erro = "Preencha todos os campos obrigatórios (*).";
+        }
     }
 }
 
@@ -68,7 +72,7 @@ include 'includes/header.php';
         
         <div class="form-group">
             <label for="senha">Senha *</label>
-            <input type="password" id="senha" name="senha" required placeholder="Crie uma senha segura">
+            <input type="password" id="senha" name="senha" required placeholder="Crie uma senha segura" minlength="6">
         </div>
 
         <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Cadastrar</button>

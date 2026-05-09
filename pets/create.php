@@ -13,11 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_nascimento = !empty($_POST['data_nascimento']) ? $_POST['data_nascimento'] : null;
 
     if (!empty($nome) && !empty($especie)) {
-        $petModel = new Pet();
-        if ($petModel->salvar($_SESSION['usuario_id'], $nome, $especie, $raca, $data_nascimento)) {
-            header("Location: index.php"); exit;
+        $hoje = date('Y-m-d');
+        if ($data_nascimento && $data_nascimento > $hoje) {
+            $erro = "A data de nascimento do pet não pode ser no futuro.";
         } else {
-            $erro = "Erro ao cadastrar.";
+            $petModel = new Pet();
+            if ($petModel->salvar($_SESSION['usuario_id'], $nome, $especie, $raca, $data_nascimento)) {
+                header("Location: index.php"); exit;
+            } else {
+                $erro = "Erro ao cadastrar.";
+            }
         }
     } else {
         $erro = "Preencha Nome e Espécie.";
