@@ -16,11 +16,12 @@ $base_url = 'http://' . $_SERVER['HTTP_HOST'] . rtrim($basePath, '/');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patinhas Felizes - O Melhor Petshop</title>
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="<?php echo $base_url; ?>/index.php" class="navbar-brand">🐾 Patinhas Felizes</a>
+        <a href="<?php echo $base_url; ?>/index.php" class="navbar-brand"><i class="fas fa-paw"></i> Patinhas Felizes</a>
         
         <div class="navbar-menu">
             <?php if (isset($_SESSION['usuario_id'])): ?>
