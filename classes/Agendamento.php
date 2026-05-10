@@ -30,17 +30,17 @@ class Agendamento {
                 FROM agendamentos a
                 JOIN pets p ON a.pet_id = p.id
                 JOIN servicos s ON a.servico_id = s.id
-                WHERE a.usuario_id = ?
+                WHERE a.usuario_id = :usuario_id
                 ORDER BY a.data_hora ASC";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$usuario_id]);
+        $stmt->execute(['usuario_id' => $usuario_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Para o Admin mudar o status
     public function atualizarStatus($id, $status) {
-        $stmt = $this->pdo->prepare("UPDATE agendamentos SET status = ? WHERE id = ?");
-        return $stmt->execute([$status, $id]);
+        $stmt = $this->pdo->prepare("UPDATE agendamentos SET status = :status WHERE id = :id");
+        return $stmt->execute(['status' => $status, 'id' => $id]);
     }
 
     // Para o Tutor deletar o próprio agendamento
