@@ -42,5 +42,22 @@ class Usuario {
 
         return false;
     }
+
+    public function atualizar($id, $nome, $email, $telefone) {
+        $sql = "UPDATE usuarios SET nome = :nome, email = :email, telefone = :telefone WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            'nome' => $nome,
+            'email' => $email,
+            'telefone' => $telefone,
+            'id' => $id
+        ]);
+    }
+
+    public function deletar($id) {
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute(['id' => $id]);
+    }
 }
 ?>

@@ -34,6 +34,7 @@ $base_url = 'http://' . $_SERVER['HTTP_HOST'] . rtrim($basePath, '/');
                 <?php else: ?>
                     <!-- Links do TUTOR (Cliente) -->
                     <a href="<?php echo $base_url; ?>/dashboard.php">Meu Dashboard</a>
+                    <a href="<?php echo $base_url; ?>/meu_perfil.php">Meu Perfil</a>
                     <a href="<?php echo $base_url; ?>/pets/index.php">Meus Pets</a>
                     <a href="<?php echo $base_url; ?>/agendamentos/create.php">Novo Agendamento</a>
                 <?php endif; ?>

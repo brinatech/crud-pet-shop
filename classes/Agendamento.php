@@ -42,5 +42,19 @@ class Agendamento {
         $stmt = $this->pdo->prepare("UPDATE agendamentos SET status = ? WHERE id = ?");
         return $stmt->execute([$status, $id]);
     }
+
+    // Para o Tutor deletar o próprio agendamento
+    public function deletar($id, $usuario_id) {
+        $sql = "DELETE FROM agendamentos WHERE id = :id AND usuario_id = :usuario_id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute(['id' => $id, 'usuario_id' => $usuario_id]);
+    }
+
+    // Para o Admin deletar qualquer agendamento
+    public function deletarAdmin($id) {
+        $sql = "DELETE FROM agendamentos WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute(['id' => $id]);
+    }
 }
 ?>

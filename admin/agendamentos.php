@@ -36,6 +36,7 @@ include '../includes/header.php';
                             </select>
                             <button class="btn btn-small">Salvar</button>
                         </form>
+                        <a href="agendamentos_delete.php?id=<?php echo $ag['id']; ?>" class="btn btn-small btn-danger" style="margin-top:5px; display:inline-block;" onclick="return confirm('Excluir este agendamento do histórico?');">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; if(empty($todos)): ?>

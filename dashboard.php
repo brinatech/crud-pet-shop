@@ -48,6 +48,7 @@ include 'includes/header.php';
                 <th>Serviço</th>
                 <th>Valor</th>
                 <th>Status</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -64,6 +65,9 @@ include 'includes/header.php';
                                 if ($badgeClass == 'concluído') $badgeClass = 'concluido';
                             ?>
                             <span class="badge badge-<?php echo $badgeClass; ?>"><?php echo $ag['status']; ?></span>
+                        </td>
+                        <td>
+                            <a href="agendamentos_delete.php?id=<?php echo $ag['id']; ?>" class="btn btn-small btn-danger" onclick="return confirm('Deseja cancelar e excluir este agendamento?');">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

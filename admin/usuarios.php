@@ -32,6 +32,7 @@ include '../includes/header.php';
                 <th>Contato</th>
                 <th>Pets Vinculados</th>
                 <th>Data de Cadastro</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -46,9 +47,12 @@ include '../includes/header.php';
                         <?php echo !empty($tutor['pets_lista']) ? htmlspecialchars($tutor['pets_lista']) : '<span style="color:#999; font-style:italic;">Nenhum pet</span>'; ?>
                     </td>
                     <td><?php echo date('d/m/Y', strtotime($tutor['criado_em'])); ?></td>
+                    <td>
+                        <a href="usuarios_delete.php?id=<?php echo $tutor['id']; ?>" class="btn btn-small btn-danger" onclick="return confirm('Deseja excluir este cliente? Todos os seus pets e agendamentos serão removidos.');">Excluir</a>
+                    </td>
                 </tr>
             <?php endforeach; if(empty($tutores)): ?>
-                <tr><td colspan="4" class="empty-state">Nenhum cliente cadastrado ainda.</td></tr>
+                <tr><td colspan="5" class="empty-state">Nenhum cliente cadastrado ainda.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>
