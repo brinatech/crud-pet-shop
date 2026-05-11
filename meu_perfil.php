@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Busca dados atuais do usuário (Poderia vir da sessão, mas buscar no banco garante dados frescos)
 require_once 'classes/Conexao.php';
 $pdo = Conexao::getConn();
-$stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id = ?");
-$stmt->execute([$_SESSION['usuario_id']]);
+$stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
+$stmt->execute(['id' => $_SESSION['usuario_id']]);
 $u = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/crud-pet-shop';

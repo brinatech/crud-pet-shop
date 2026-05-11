@@ -9,21 +9,30 @@ class Servico {
         return $this->pdo->query("SELECT * FROM servicos ORDER BY nome ASC")->fetchAll(PDO::FETCH_ASSOC);
     }
     public function buscarPorId($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM servicos WHERE id = ?");
-        $stmt->execute([$id]);
+        $stmt = $this->pdo->prepare("SELECT * FROM servicos WHERE id = :id");
+        $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function salvar($nome, $preco, $duracao) {
-        $stmt = $this->pdo->prepare("INSERT INTO servicos (nome, preco, duracao_minutos) VALUES (?, ?, ?)");
-        return $stmt->execute([$nome, $preco, $duracao]);
+        $stmt = $this->pdo->prepare("INSERT INTO servicos (nome, preco, duracao_minutos) VALUES (:nome, :preco, :duracao)");
+        return $stmt->execute([
+            'nome' => $nome,
+            'preco' => $preco,
+            'duracao' => $duracao
+        ]);
     }
     public function atualizar($id, $nome, $preco, $duracao) {
-        $stmt = $this->pdo->prepare("UPDATE servicos SET nome = ?, preco = ?, duracao_minutos = ? WHERE id = ?");
-        return $stmt->execute([$nome, $preco, $duracao, $id]);
+        $stmt = $this->pdo->prepare("UPDATE servicos SET nome = :nome, preco = :preco, duracao_minutos = :duracao WHERE id = :id");
+        return $stmt->execute([
+            'nome' => $nome,
+            'preco' => $preco,
+            'duracao' => $duracao,
+            'id' => $id
+        ]);
     }
     public function deletar($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM servicos WHERE id = ?");
-        return $stmt->execute([$id]);
+        $stmt = $this->pdo->prepare("DELETE FROM servicos WHERE id = :id");
+        return $stmt->execute(['id' => $id]);
     }
 }
 ?>
